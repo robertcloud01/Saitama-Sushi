@@ -3,9 +3,10 @@
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { ArrowLeft, Minus, Plus, ShoppingBag } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { PRODUCTS, SAUCES } from "@/lib/mock-data";
 import { useCartStore } from "@/lib/store";
+import { formatCurrency } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
@@ -118,10 +119,7 @@ export default function ProductPage() {
                             </p>
                             <div className="mt-6 flex items-center gap-3">
                                 <span className="text-3xl font-bold text-white">
-                                    {(product.price / 100).toLocaleString("pt-BR", {
-                                        style: "currency",
-                                        currency: "BRL",
-                                    })}
+                                    {formatCurrency(product.price)}
                                 </span>
                             </div>
                         </div>
@@ -183,7 +181,7 @@ export default function ProductPage() {
                                                         {related.name}
                                                     </p>
                                                     <p className="text-sm text-gray-400">
-                                                        {(related.price / 100).toLocaleString("pt-BR", { style: 'currency', currency: 'BRL' })}
+                                                        {formatCurrency(related.price)}
                                                     </p>
                                                 </div>
                                             </div>
@@ -226,7 +224,7 @@ export default function ProductPage() {
                                 <ShoppingBag className="w-5 h-5" />
                                 <span>Adicionar</span>
                                 <span className="bg-white/20 px-2 py-0.5 rounded text-sm">
-                                    {(finalTotalPrice / 100).toLocaleString("pt-BR", { style: 'currency', currency: 'BRL' })}
+                                    {formatCurrency(finalTotalPrice)}
                                 </span>
                             </button>
                         </div>

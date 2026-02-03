@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { PRODUCTS } from "@/lib/mock-data";
+import { PRODUCTS, Product } from "@/lib/mock-data";
 import { Plus } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 
@@ -16,7 +16,7 @@ export function PopularDishesSection() {
     const col2Products = allProducts.filter((_, i) => i % 2 === 0);
     const col3Products = allProducts.filter((_, i) => i % 2 !== 0);
 
-    const handleAdd = (e: React.MouseEvent, product: any) => {
+    const handleAdd = (e: React.MouseEvent, product: Product) => {
         e.preventDefault();
         e.stopPropagation();
         addItem({
@@ -92,7 +92,7 @@ export function PopularDishesSection() {
     );
 }
 
-function PopularCard({ product, onAdd }: { product: any, onAdd: (e: any, p: any) => void }) {
+function PopularCard({ product, onAdd }: { product: Product, onAdd: (e: React.MouseEvent, p: Product) => void }) {
     return (
         <div className="group relative bg-[#111111] rounded-2xl overflow-hidden cursor-pointer transition-transform duration-300 hover:-translate-y-1">
             <div className="relative aspect-[1.2/1] w-full">

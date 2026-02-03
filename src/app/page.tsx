@@ -9,7 +9,6 @@ import { BrandsMarquee } from "@/components/home/BrandsMarquee";
 import { FloatingMenuButton } from "@/components/layout/FloatingMenuButton";
 import { Footer } from "@/components/layout/Footer";
 
-import { LoyaltyBanner } from "@/components/home/LoyaltyBanner";
 
 export default function Home() {
   return (

@@ -74,7 +74,14 @@ export function Footer() {
                 <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
                     <p>&copy; 2025 Saitama Delivery. Todos os direitos reservados.</p>
                     <div className="flex gap-6">
-                        <span>Desenvolvido por Antigravity</span>
+                        <Link
+                            href="https://my-portif-lio-three.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-accent transition-colors"
+                        >
+                            Desenvolvido por VALHALLAS.DEV
+                        </Link>
                     </div>
                 </div>
             </div>

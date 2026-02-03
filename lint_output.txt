@@ -1,0 +1,93 @@
+﻿
+> saitama-delivery@0.1.0 lint
+> eslint
+
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\login\page.tsx
+  4:21  warning  'User' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\order-confirmation\page.tsx
+  13:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\order-confirmation\page.tsx:13:9
+  11 |     useEffect(() => {
+  12 |         // Generate distinct random ID on mount
+> 13 |         setOrderId(Math.floor(100000 + Math.random() * 900000).toString());
+     |         ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  14 |     }, []);
+  15 |
+  16 |     return (  react-hooks/set-state-in-effect
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\product\[id]\page.tsx
+   6:20  warning  'useEffect' is defined but never used                   @typescript-eslint/no-unused-vars
+  39:11  warning  'handleToggleSauce' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\profile\addresses\page.tsx
+  3:10  warning  'MapPin' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\profile\orders\page.tsx
+  3:10  warning  'ShoppingBag' is defined but never used  @typescript-eslint/no-unused-vars
+  3:23  warning  'Clock' is defined but never used        @typescript-eslint/no-unused-vars
+  4:8   warning  'Image' is defined but never used        @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\satimoney\page.tsx
+  149:46  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  149:64  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\components\home\Hero.tsx
+   7:10  warning  'Clock' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+   7:17  warning  'ShieldCheck' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+   7:30  warning  'Zap' is defined but never used                                                                                     @typescript-eslint/no-unused-vars
+   7:35  warning  'MessageCircle' is defined but never used                                                                           @typescript-eslint/no-unused-vars
+   7:50  warning  'Fish' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+   7:56  warning  'CreditCard' is defined but never used                                                                              @typescript-eslint/no-unused-vars
+   7:68  warning  'Phone' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+  59:8   warning  React Hook React.useEffect has a missing dependency: 'nextSlide'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\components\home\PopularDishesSection.tsx
+  19:54  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  95:53  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  95:69  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  95:77  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\components\menu\MenuGrid.tsx
+  9:15  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\components\menu\MenuSidebar.tsx
+  24:37  warning  'index' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\components\menu\StickyCart.tsx
+  4:23  warning  'Trash2' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\components\ui\ProductModal.tsx
+   4:26  warning  'Check' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+   9:10  warning  'cn' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  26:13  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\components\ui\ProductModal.tsx:26:13
+  24 |     useEffect(() => {
+  25 |         if (isOpen) {
+> 26 |             setQuantity(1);
+     |             ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  27 |             setSelectedSauces([]);
+  28 |             setIsIngredientsOpen(false);
+  29 |         }  react-hooks/set-state-in-effect
+  38:11  warning  'handleToggleSauce' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\lib\store.ts
+  10:15  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Ô£û 30 problems (10 errors, 20 warnings)
+

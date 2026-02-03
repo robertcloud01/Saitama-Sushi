@@ -1,11 +1,14 @@
 "use client";
 
 import { useCartStore } from "@/lib/store";
+import { formatCurrency } from "@/lib/utils";
 import Image from "next/image";
 import { Plus } from "lucide-react";
 
+import { Product } from "@/lib/mock-data";
+
 interface MenuGridProps {
-    products: any[];
+    products: Product[];
 }
 
 export function MenuGrid({ products }: MenuGridProps) {
@@ -38,8 +41,7 @@ export function MenuGrid({ products }: MenuGridProps) {
 
                         <div className="flex items-center justify-between mt-2">
                             <span className="text-white font-semibold text-lg">
-                                {(product.price / 100).toLocaleString("pt-BR", { minimumFractionDigits: 3 }).replace(',', '.').replace(/.([0-9])$/, '$1')}
-                                <span className="text-[10px] align-top ml-0.5 text-gray-400">¥</span>
+                                {formatCurrency(product.price)}
                             </span>
 
                             <button
