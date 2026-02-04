@@ -7,7 +7,7 @@ export interface CartItem {
     price: number;
     quantity: number;
     image?: string;
-    options?: any;
+    options?: Record<string, unknown>;
 }
 
 interface CartState {

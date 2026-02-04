@@ -23,11 +23,15 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
     // Reset state when product changes
     useEffect(() => {
         if (isOpen) {
-            setQuantity(1);
-            setSelectedSauces([]);
-            setIsIngredientsOpen(false);
+            // Use setTimeout to avoid synchronous state updates in effect (lint fix)
+            const timer = setTimeout(() => {
+                setQuantity(1);
+                setSelectedSauces([]);
+                setIsIngredientsOpen(false);
+            }, 0);
+            return () => clearTimeout(timer);
         }
-    }, [isOpen, product]);
+    }, [isOpen]);
 
     if (!isOpen || !product) return null;
 

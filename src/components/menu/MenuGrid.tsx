@@ -5,7 +5,14 @@ import { formatCurrency } from "@/lib/utils";
 import Image from "next/image";
 import { Plus } from "lucide-react";
 
-import { Product } from "@/lib/mock-data";
+
+
+interface Product {
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+}
 
 interface MenuGridProps {
     products: Product[];

@@ -6,12 +6,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 export default function OrderConfirmationPage() {
-    const [orderId, setOrderId] = useState("");
-
-    useEffect(() => {
-        // Generate distinct random ID on mount
-        setOrderId(Math.floor(100000 + Math.random() * 900000).toString());
-    }, []);
+    const [orderId] = useState(() => Math.floor(100000 + Math.random() * 900000).toString());
 
     return (
         <div className="min-h-screen bg-black flex items-center justify-center p-4">

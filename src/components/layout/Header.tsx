@@ -6,10 +6,13 @@ import { useState, useEffect } from "react";
 import clsx from "clsx";
 import { useCartStore } from "@/lib/store";
 import { motion, AnimatePresence } from "framer-motion";
+import { supabase } from "@/lib/supabase";
+import { User as SupabaseUser } from "@supabase/supabase-js"; // Type alias to avoid conflict with Lucide icon
 
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [user, setUser] = useState<SupabaseUser | null>(null);
     const cartTotalItems = useCartStore((state) => state.totalItems());
     const toggleCart = useCartStore((state) => state.toggleCart);
 
@@ -18,8 +21,32 @@ export function Header() {
             setIsScrolled(window.scrollY > 50);
         };
         window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+
+        // Check active session
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            console.log("Header mount - Session:", session);
+            setUser(session?.user ?? null);
+        });
+
+        // Listen for auth changes
+        const {
+            data: { subscription },
+        } = supabase.auth.onAuthStateChange((event, session) => {
+            console.log("Auth Change:", event, session);
+            setUser(session?.user ?? null);
+        });
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            subscription.unsubscribe();
+        };
     }, []);
+
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
+        setUser(null);
+        window.location.href = "/";
+    };
 
     return (
         <>
@@ -55,18 +82,29 @@ export function Header() {
 
                         <div className="h-6 w-px bg-white/20 hidden md:block"></div>
 
-                        <button className="text-white hover:text-accent transition-colors">
-                            <span className="font-bold border border-white/30 rounded px-2 py-0.5 text-xs">PT</span>
-                        </button>
+                        {user ? (
+                            <div className="flex items-center gap-4">
+                                <Link href="/profile/satimoney" className="flex items-center gap-2 text-white hover:text-accent transition-colors">
+                                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center font-bold text-white text-xs">
+                                        {user.email?.substring(0, 2).toUpperCase()}
+                                    </div>
+                                </Link>
+                                <button onClick={handleLogout} className="text-xs text-gray-400 hover:text-white uppercase font-bold">
+                                    Sair
+                                </button>
+                            </div>
+                        ) : (
+                            <Link href="/login" className="flex items-center gap-2 text-white hover:text-accent transition-colors">
+                                <User className="w-5 h-5 md:w-6 md:h-6" />
+                                <span className="hidden md:inline text-xs font-bold uppercase">Entrar</span>
+                            </Link>
+                        )}
 
                         <div className="h-6 w-px bg-white/20 hidden md:block"></div>
 
-                        <Link href="/login" className="text-white hover:text-accent transition-colors">
-                            <User className="w-5 h-5 md:w-6 md:h-6" />
-                        </Link>
-
                         <button
                             onClick={toggleCart}
+
                             className="relative text-white hover:text-accent transition-colors"
                             aria-label="Open Cart"
                         >

@@ -1,8 +1,37 @@
 "use client";
 
-import { Coins, TrendingUp, TrendingDown } from "lucide-react";
+import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase";
+import { Coins, TrendingUp, Loader2 } from "lucide-react";
 
 export default function SatimoneyProfilePage() {
+    const [balance, setBalance] = useState(0);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchBalance = async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) return;
+
+            const { data, error } = await supabase
+                .from('User')
+                .select('loyalty')
+                .eq('id', session.user.id)
+                .single();
+
+            if (!error && data) {
+                setBalance(data.loyalty || 0);
+            }
+            setLoading(false);
+        };
+        fetchBalance();
+    }, []);
+
+    if (loading) return <div className="text-center py-8"><Loader2 className="w-8 h-8 animate-spin mx-auto text-[#ff2ca2]" /></div>;
+
+    const nextLevel = 3000;
+    const progress = Math.min((balance / nextLevel) * 100, 100);
+
     return (
         <div>
             <h2 className="text-2xl font-bold text-white mb-8">Satimoney</h2>
@@ -13,7 +42,7 @@ export default function SatimoneyProfilePage() {
                     <div>
                         <p className="text-white/80 font-bold uppercase tracking-widest text-sm mb-1">Saldo Atual</p>
                         <h3 className="text-5xl font-black text-white flex items-center gap-2">
-                            2,450
+                            {balance.toLocaleString()}
                             <span className="text-2xl opacity-80 font-medium">STM</span>
                         </h3>
                     </div>
@@ -25,21 +54,19 @@ export default function SatimoneyProfilePage() {
                 <div className="bg-black/20 rounded-xl p-4 backdrop-blur-md">
                     <div className="flex justify-between text-sm text-white mb-2 font-medium">
                         <span>Próximo nível: Platinum</span>
-                        <span>550 STM restantes</span>
+                        <span>{(nextLevel - balance).toLocaleString()} STM restantes</span>
                     </div>
                     <div className="h-2 w-full bg-black/20 rounded-full overflow-hidden">
-                        <div className="h-full bg-white w-[85%]" />
+                        <div className="h-full bg-white transition-all duration-1000" style={{ width: `${progress}%` }} />
                     </div>
                 </div>
             </div>
 
-            {/* History */}
+            {/* History - Mock for now as we don't have a transaction table yet */}
             <h3 className="text-xl font-bold text-white mb-6">Histórico de transações</h3>
             <div className="space-y-4">
                 {[
-                    { type: 'earn', desc: 'Cashback - Pedido #8492', date: 'Hoje, 19:30', amount: '+ 145', icon: TrendingUp },
-                    { type: 'redeem', desc: 'Resgate - Cupom R$ 20', date: 'Ontem, 14:20', amount: '- 500', icon: TrendingDown },
-                    { type: 'earn', desc: 'Cashback - Pedido #8102', date: 'Ontem, 20:15', amount: '+ 89', icon: TrendingUp },
+                    { type: 'earn', desc: 'Bônus de Boas-vindas', date: 'Hoje', amount: '+ 100', icon: TrendingUp },
                 ].map((item, i) => (
                     <div key={i} className="bg-[#111] border border-white/5 rounded-xl p-4 flex items-center justify-between">
                         <div className="flex items-center gap-4">

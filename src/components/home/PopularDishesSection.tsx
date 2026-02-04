@@ -2,19 +2,31 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { PRODUCTS, Product } from "@/lib/mock-data";
 import { Plus } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 
-export function PopularDishesSection() {
+// Define types for the component props and internal data
+interface Product {
+    id: string;
+    name: string;
+    description?: string | null;
+    price: number;
+    image: string; // Changed from string | null to string
+    category?: {
+        name: string;
+    };
+}
+
+interface PopularDishesSectionProps {
+    products: Product[]; // Now strictly typed validation
+}
+
+export function PopularDishesSection({ products }: PopularDishesSectionProps) {
     const addItem = useCartStore((state) => state.addItem);
 
-    // Use the real products from our mock data
-    // We want to skip the first few that might be in the hero or categories if desired, 
-    // but for now let's just use all of them split between columns.
-    const allProducts = PRODUCTS.slice(0, 12);
-    const col2Products = allProducts.filter((_, i) => i % 2 === 0);
-    const col3Products = allProducts.filter((_, i) => i % 2 !== 0);
+    // Use passed products instead of mock
+    const col2Products = products.filter((_, i) => i % 2 === 0);
+    const col3Products = products.filter((_, i) => i % 2 !== 0);
 
     const handleAdd = (e: React.MouseEvent, product: Product) => {
         e.preventDefault();

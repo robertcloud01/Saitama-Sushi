@@ -142,19 +142,19 @@ export default function SatimoneyPage() {
                             viewport={{ once: true }}
                         >
                             <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
-                                Unlock <span className="text-[#ff2ca2]">Exclusive</span> <br />
-                                Privileges
+                                Desbloqueie <span className="text-[#ff2ca2]">Privilégios</span> <br />
+                                Exclusivos
                             </h2>
                             <p className="text-xl text-gray-300 mb-8">
-                                Satimoney isn't just points. It's your key to the VIP experience.
+                                Satimoney não são apenas pontos. É a sua chave para uma experiência VIP.
                             </p>
 
                             <ul className="space-y-6">
                                 {[
-                                    "Priority Delivery",
-                                    "Access to Secret Menu Items",
-                                    "Birthday Surprises",
-                                    "Double Points Events"
+                                    "Entrega Prioritária",
+                                    "Acesso ao Menu Secreto",
+                                    "Surpresas de Aniversário",
+                                    "Eventos com Pontos em Dobro"
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-center gap-4">
                                         <div className="w-8 h-8 rounded-full bg-[#ff2ca2]/20 flex items-center justify-center">
