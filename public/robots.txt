@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://saitama-delivery.vercel.app/sitemap.xml
