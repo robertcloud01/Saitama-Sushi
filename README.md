@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Saitama Delivery — Aplicativo de Delivery de Sushi
 
-## Getting Started
+Visão Geral
+- Plataforma de delivery focada em performance, UX moderna e SEO.
+- Construída em Next.js (App Router) com UI animada e integração a Supabase.
+- Deploy na Vercel com rotas estáticas e dinâmicas otimizadas.
 
-First, run the development server:
+Principais Funcionalidades
+- Catálogo com categorias e destaques.
+- Página de produto dinâmica: /product/[id].
+- Carrinho persistente (Zustand + persist).
+- Checkout com visual moderno.
+- Perfil com cartões, endereços, pedidos e “Satimoney”.
+- Sitemap em /sitemap.xml e robots.txt configurado.
 
+Stack Técnica
+- Next.js 16 (App Router, Metadata, Image).
+- React 19 e TailwindCSS.
+- Framer Motion para animações.
+- Zustand para estado do carrinho.
+- Supabase para dados (produtos populares, perfil, etc.).
+- Vercel para deploy e edge.
+
+Pré‑requisitos
+- Node.js 18+.
+- Conta e projeto no Supabase (variáveis de ambiente).
+- Conta na Vercel (opcional para deploy).
+
+Instalação
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install # ou npm install / yarn
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Executar em Desenvolvimento
+```bash
+pnpm dev # ou npm run dev
+```
+Abra http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Build de Produção
+```bash
+pnpm build # ou npm run build
+pnpm start # ou npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Scripts
+- dev: next dev
+- build: next build
+- start: next start
+- lint: eslint
 
-## Learn More
+Variáveis de Ambiente
+Crie .env.local com:
+```
+NEXT_PUBLIC_SUPABASE_URL=...
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+```
+Se necessário, variáveis adicionais para funcionalidades futuras.
 
-To learn more about Next.js, take a look at the following resources:
+Estrutura de Pastas (simplificada)
+- src/app: rotas e layouts (App Router).
+- src/components: UI e layout.
+- src/lib: store do carrinho, utilitários, mock‑data.
+- public: assets estáticos, images e robots.txt.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+SEO
+- robots.txt em public/robots.txt referencia /sitemap.xml.
+- sitemap gerado em src/app/sitemap.ts.
+- Metadados definidos em src/app/layout.tsx.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Integração com Supabase
+- Consulta de produtos populares na Home ([page.tsx](src/app/page.tsx)).
+- Telas de perfil e recursos associados (endereços, cartões, etc.).
+- Garanta chaves válidas em .env.local.
 
-## Deploy on Vercel
+Qualidade
+- TypeScript estrito, lint com eslint-config-next.
+- Imagens otimizadas via next/image.
+- UI responsiva e acessível.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deploy (Vercel)
+- Faça build local e conecte o projeto à Vercel.
+- As rotas estáticas e dinâmicas são tratadas pelo App Router.
+- Verifique logs de deploy e status de rotas especiais (sitemap).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Roadmap
+- Finalizar páginas institucionais (about, locations, careers, contact).
+- Expandir checkout com integrações reais de pagamento.
+- Observabilidade (logs, métricas).
+
+Licença
+- Uso interno. Avalie adicionar uma licença conforme necessidade do projeto.
+
+Contato
+- Sugestões e melhorias são bem‑vindas.
