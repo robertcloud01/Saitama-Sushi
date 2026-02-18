@@ -2,6 +2,8 @@ import { ProductService } from "@/services/product.service";
 import { ProductClient } from "./ProductClient";
 import { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 interface PageProps {
     params: Promise<{ id: string }>;
 }

@@ -4,6 +4,8 @@ export interface Category {
     slug: string;
     image?: string;
     group?: string;
+    isHighlight?: boolean;
+    isHeaderOnly?: boolean;
 }
 
 export interface Product {
@@ -30,4 +32,11 @@ export interface CartItem {
     slug?: string;
     description?: string;
     options?: Record<string, unknown>;
+}
+
+export interface Sauce {
+    id: string;
+    name: string;
+    price: number;
+    image: string;
 }

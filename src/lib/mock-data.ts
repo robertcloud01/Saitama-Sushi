@@ -1,4 +1,6 @@
-export const CATEGORIES = [
+import { Category, Product, Sauce } from "@/types";
+
+export const CATEGORIES: Category[] = [
     // Group 1: Appetizers/Rolls (No Header)
     { id: 'maki', name: 'Maki', slug: 'maki', group: 'main' },
     { id: 'rolinho', name: 'Rolinho primavera', slug: 'rolinho-primavera', group: 'main' },
@@ -25,13 +27,6 @@ export const CATEGORIES = [
     { id: 'molhos', name: 'Molhos', slug: 'molhos', group: 'Molhos', isHeaderOnly: true } // Assuming it acts as header or category
 ];
 
-export interface Sauce {
-    id: string;
-    name: string;
-    price: number;
-    image: string;
-}
-
 export const SAUCES: Sauce[] = [
     { id: '1', name: 'Maionese Picante', price: 300, image: '/images/sauce-spicy.png' },
     { id: '2', name: 'Teriyaki', price: 300, image: '/images/sauce-teriyaki.png' },
@@ -39,19 +34,6 @@ export const SAUCES: Sauce[] = [
     { id: '4', name: 'Gengibre', price: 0, image: '/images/sauce-ginger.png' },
 ];
 
-export interface Product {
-    id: string;
-    name: string;
-    slug: string;
-    description: string;
-    price: number;
-    image: string;
-    categoryId: string;
-    isPopular?: boolean;
-    isNew?: boolean;
-    ingredients?: string;
-    relatedProductIds?: string[];
-}
 
 export const PRODUCTS: Product[] = [
     // --- Maki ---

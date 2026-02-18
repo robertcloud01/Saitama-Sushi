@@ -7,7 +7,7 @@ import { CartItem } from "@/types";
 import React from "react";
 import Link from "next/link";
 
-import { Product } from "@/lib/mock-data";
+import { Product } from "@/types";
 
 interface ProductCardProps {
     product: Product;

@@ -5,7 +5,8 @@ import { X, Plus, Minus } from "lucide-react";
 import Image from "next/image";
 import { useCartStore } from "@/store/cart.store";
 import { useState, useEffect } from "react";
-import { Product, PRODUCTS, SAUCES } from "@/lib/mock-data";
+import { PRODUCTS, SAUCES } from "@/lib/mock-data";
+import { Product } from "@/types";
 
 
 interface ProductModalProps {
