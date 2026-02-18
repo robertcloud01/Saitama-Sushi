@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default to Dark Theme to match Murakami City */
+  --background: #000000;
+  --foreground: #FFFFFF;
+
+  /* Accent: Neon Pink */
+  --accent: #E6007E;
+  /* Slightly adjusted pink from reference */
+  --accent-rgb: 230, 0, 126;
+
+  /* Muted / Secondary */
+  --muted: #1A1A1A;
+  --muted-foreground: #A3A3A3;
+
+  --card-bg: #121212;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

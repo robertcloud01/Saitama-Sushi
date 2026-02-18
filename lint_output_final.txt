@@ -1,0 +1,13 @@
+﻿
+> saitama-delivery@0.1.0 lint
+> eslint
+
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\product\[id]\ProductClient.tsx
+  21:28  warning  'setSelectedSauces' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\profile\page.tsx
+  5:18  warning  'SupabaseUser' is defined but never used  @typescript-eslint/no-unused-vars
+
+Ô£û 2 problems (0 errors, 2 warnings)
+

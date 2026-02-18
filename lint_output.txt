@@ -1,0 +1,53 @@
+﻿
+> saitama-delivery@0.1.0 lint
+> eslint
+
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\login\page.tsx
+  4:21  warning  'User' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\order-confirmation\page.tsx
+  6:20  warning  'useEffect' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\product\[id]\ProductClient.tsx
+  28:11  warning  'handleToggleSauce' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\profile\orders\page.tsx
+  5:23  warning  'Clock' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\app\profile\page.tsx
+  10:12  warning  'user' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  10:18  warning  'setUser' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  57:25  error    Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\components\home\Hero.tsx
+   7:10  warning  'Clock' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+   7:17  warning  'ShieldCheck' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+   7:30  warning  'Zap' is defined but never used                                                                                     @typescript-eslint/no-unused-vars
+   7:35  warning  'MessageCircle' is defined but never used                                                                           @typescript-eslint/no-unused-vars
+   7:50  warning  'Fish' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+   7:56  warning  'CreditCard' is defined but never used                                                                              @typescript-eslint/no-unused-vars
+   7:68  warning  'Phone' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+  59:8   warning  React Hook React.useEffect has a missing dependency: 'nextSlide'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\components\menu\MenuSidebar.tsx
+  24:37  warning  'index' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\components\menu\StickyCart.tsx
+  4:23  warning  'Trash2' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\components\ui\ProductModal.tsx
+   4:26  warning  'Check' is defined but never used                       @typescript-eslint/no-unused-vars
+   9:10  warning  'cn' is defined but never used                          @typescript-eslint/no-unused-vars
+  42:11  warning  'handleToggleSauce' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\services\auth.service.ts
+   2:10  warning  'SignUpWithPasswordCredentials' is defined but never used  @typescript-eslint/no-unused-vars
+  11:76  error    Unexpected any. Specify a different type                   @typescript-eslint/no-explicit-any
+
+C:\Users\rober\Desktop\delivery saitama\saitama-delivery\src\services\product.service.ts
+  17:37  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  34:37  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Ô£û 24 problems (4 errors, 20 warnings)
+
