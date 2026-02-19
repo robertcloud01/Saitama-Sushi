@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic";
+import dynamicImport from "next/dynamic";
 import { Hero } from "@/components/home/Hero";
 import { CategoriesCarousel } from "@/components/home/CategoriesCarousel";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
@@ -8,12 +8,14 @@ import { FloatingMenuButton } from "@/components/layout/FloatingMenuButton";
 import { Footer } from "@/components/layout/Footer";
 import { ProductService } from "@/services/product.service";
 
+export const dynamic = "force-dynamic";
+
 // Dynamic Imports for lower priority components
-const ReviewsSection = dynamic(() => import("@/components/home/ReviewsSection").then(mod => mod.ReviewsSection), {
+const ReviewsSection = dynamicImport(() => import("@/components/home/ReviewsSection").then(mod => mod.ReviewsSection), {
   loading: () => <div className="h-96 bg-black" />, // Simple placeholder
 });
 
-const BrandsMarquee = dynamic(() => import("@/components/home/BrandsMarquee").then(mod => mod.BrandsMarquee));
+const BrandsMarquee = dynamicImport(() => import("@/components/home/BrandsMarquee").then(mod => mod.BrandsMarquee));
 
 export const metadata = {
   title: "Saitama Delivery | Premium Sushi Experience",
